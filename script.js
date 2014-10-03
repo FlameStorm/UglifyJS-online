@@ -61,6 +61,7 @@ var default_options_text = $options.textContent || $options.innerText;
 set_options_initial();
 
 $go.onclick = go;
+$in.oninput = go;
 $options_btn.onclick = toggle_options;
 $options_reset.onclick = reset_options;
 $out.onfocus = select_text;
