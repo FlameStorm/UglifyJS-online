@@ -68,6 +68,14 @@ h1 {
 	font-weight: bold;
 }
 
+button {
+	margin: 5px 0;
+}
+
+textarea {
+    display: block;
+}
+
 pre {
 	word-wrap: break-word;
 	overflow-wrap: break-word;
