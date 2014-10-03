@@ -10,7 +10,7 @@ html, body {
 	font: 100%/1.5 Arial, sans-serif;
 }
 
-.masthead {
+.header {
 	min-height: 4em;
 }
 
@@ -30,14 +30,14 @@ h1 {
 .in-container, #out-container {
 	position: relative;
 	height: 26em;
-	height: -moz-calc( 100% - 8em );
-	height: -webkit-calc( 100% - 8em );
-	height: calc( 100% - 8em );
+	height: -moz-calc( 100% - 9em );
+	height: -webkit-calc( 100% - 9em );
+	height: calc( 100% - 9em );
 	margin-bottom: 0.25em;
 }
 
 .in-container, #info, #out-container, #error-container {
-	margin-top: 4em;
+	margin-top: 5em;
 	margin-left: 1em;
 }
 

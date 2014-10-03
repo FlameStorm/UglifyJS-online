@@ -66,7 +66,7 @@ $out.onfocus = select_text;
 
 function show() {
 	for (var i = 0; i < arguments.length; i++) {
-		arguments[i].className = '';
+		arguments[i].removeAttribute('class');
 	}
 }
 
@@ -78,6 +78,7 @@ function hide() {
 
 function toggle_options() {
 	if ($options.className === 'hidden') {
+		$options_btn.innerHTML = 'Save';
 		$options_btn.className = 'active';
 		hide($in, $go);
 		show($options, $options_reset);
@@ -85,7 +86,8 @@ function toggle_options() {
 	} else {
 		if (set_options()) {
 			hide($options, $options_reset);
-			$options_btn.className = '';
+			$options_btn.innerHTML = 'Options';
+			$options_btn.removeAttribute('class');
 			show($in, $go);
 			$in.focus();
 		}
@@ -112,7 +114,7 @@ function set_options() {
 		} catch (e) {}
 
 		// Run Uglify with the new options.
-		go(true);
+		go();
 		return true;
 	} catch (e) {
 		if (e instanceof JS_Parse_Error) {
@@ -129,7 +131,8 @@ function set_options() {
 
 function reset_options() {
 	$options.value = $options.textContent || $options.innerText;
-	toggle_options();
+
+	$options_btn.focus();
 }
 
 function set_options_initial() {
@@ -160,17 +163,13 @@ function encodeHTML(str) {
 		.replace(/"/g, '&quot;');
 }
 
-function go(throw_on_error) {
+function go() {
 	var input = $in.value;
 
-	if (throw_on_error === true) {
+	try {
 		main();
-	} else {
-		try {
-			main();
-		} catch (e) {
-			show_error(e, input);
-		}
+	} catch (e) {
+		show_error(e, input);
 	}
 
 	function main() {
@@ -193,7 +192,7 @@ function show_error(e, param) {
 		var lines = input.split('\n');
 		var line = lines[e.line - 1];
 		e = 'Parse error: <strong>' + encodeHTML(e.message) + '</strong>\n' +
-			'<small>Line ' + e.line + ', column ' + e.col + '</small>\n\n' +
+			'<small>Line ' + e.line + ', column ' + (e.col + 1) + '</small>\n\n' +
 			(lines[e.line-2] ? (e.line - 1) + ': ' + encodeHTML(lines[e.line-2]) + '\n' : '') +
 			e.line + ': ' +
 				encodeHTML(line.substr(0, e.col)) +
