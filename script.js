@@ -57,6 +57,7 @@ function $(id) {
 
 var console = window.console || { log: function () {}, error: function () {} };
 
+var default_options_text = $options.textContent || $options.innerText;
 set_options_initial();
 
 $go.onclick = go;
@@ -106,7 +107,6 @@ function set_options() {
 
 		// The options could be parsed. Try to update localStorage.
 		try {
-			var default_options_text = $options.textContent || $options.innerText;
 			if (default_options_text === $options.value)
 				localStorage.removeItem('uglify-options');
 			else
@@ -130,13 +130,12 @@ function set_options() {
 }
 
 function reset_options() {
-	$options.value = $options.textContent || $options.innerText;
+	$options.value = default_options_text;
 
 	$options_btn.focus();
 }
 
 function set_options_initial() {
-	var default_options_text = $options.textContent || $options.innerText;
 	default_options = get_options(default_options_text);
 
 	// If there are options saved with localStorage, load them now.
