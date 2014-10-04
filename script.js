@@ -141,6 +141,9 @@ function set_options() {
 function reset_options() {
 	$options.value = default_options_text;
 
+	$options_auto.checked = true;
+	toggle_autominify();
+
 	$options_btn.focus();
 }
 
