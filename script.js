@@ -61,11 +61,11 @@ var console = window.console || { log: function () {}, error: function () {} };
 var default_options_text = $options.textContent || $options.innerText;
 set_options_initial();
 
-$go.onclick = go;
-$options_btn.onclick = toggle_options;
-$options_reset.onclick = reset_options;
-$options_auto.onclick = toggle_autominify;
-$out.onfocus = select_text;
+$go.addEventListener('click', go);
+$options_btn.addEventListener('click', toggle_options);
+$options_reset.addEventListener('click', reset_options);
+$options_auto.addEventListener('click', toggle_autominify);
+$out.addEventListener('focus', select_text);
 
 function show() {
 	for (var i = 0; i < arguments.length; i++) {

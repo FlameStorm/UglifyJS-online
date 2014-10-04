@@ -1,9 +1,8 @@
 CACHE MANIFEST
 
-# Appcache version 20141003
+# Appcache version 2014.10.04
 # (whenever a change is made anywhere, change this version)
 
-./
 favicon.ico
 style.css
 
