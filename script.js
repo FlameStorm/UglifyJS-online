@@ -42,6 +42,7 @@ var uglify_options;
 var $options = $('options');
 var $options_btn = $('options-btn');
 var $options_reset = $('options-reset');
+var $options_auto = $('options-auto');
 var $go = $('go');
 var $out = $('out');
 var $out_container = $('out-container');
@@ -61,9 +62,9 @@ var default_options_text = $options.textContent || $options.innerText;
 set_options_initial();
 
 $go.onclick = go;
-$in.oninput = go;
 $options_btn.onclick = toggle_options;
 $options_reset.onclick = reset_options;
+$options_auto.onclick = toggle_autominify;
 $out.onfocus = select_text;
 
 function show() {
@@ -78,16 +79,23 @@ function hide() {
 	}
 }
 
+function toggle_autominify() {
+	if ($options_auto.checked)
+		$in.addEventListener('input', go);
+	else
+		$in.removeEventListener('input', go);
+}
+
 function toggle_options() {
 	if ($options.className === 'hidden') {
 		$options_btn.innerHTML = 'Save';
 		$options_btn.className = 'active';
 		hide($in, $go);
-		show($options, $options_reset);
+		show($options, $options_reset, $options_auto, $('options-auto-label'));
 		$options.focus();
 	} else {
 		if (set_options()) {
-			hide($options, $options_reset);
+			hide($options, $options_reset, $options_auto, $('options-auto-label'));
 			$options_btn.innerHTML = 'Options';
 			$options_btn.removeAttribute('class');
 			show($in, $go);
@@ -154,6 +162,8 @@ function set_options_initial() {
 		$options.value = default_options_text;
 		uglify_options = default_options;
 	}
+
+	toggle_autominify();
 }
 
 function encodeHTML(str) {

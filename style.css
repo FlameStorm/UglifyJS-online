@@ -68,6 +68,9 @@ h1 {
 	font-weight: bold;
 }
 
+button, input, label {
+    font-size: 0.8em;
+}
 button {
 	margin: 5px 0;
 }
