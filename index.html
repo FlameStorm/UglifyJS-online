@@ -15,9 +15,9 @@
 </head>
 <body>
 
-<div class="header">
-	<h1>UglifyJS: Online JavaScript minifier</h1>
-</div>
+<h1>UglifyJS: Online JavaScript minifier</h1>
+
+<div id="out-stats" class="invisible">The minified output (<span id="stats"></span>)</div>
 
 <div class="col">
 	<div class="in-container">
@@ -78,7 +78,7 @@
 </textarea>
 		<button id="options-btn" tabindex="2">Options</button>
 		<button class="hidden" id="options-reset" tabindex="2">Restore defaults</button>
-		<input type="checkbox" class="hidden" id="options-auto" tabindex="2" checked><label for="options-auto" id="options-auto-label" class="hidden">Auto-minify on type</label>
+		<span id="options-auto-wrapper"><input type="checkbox" class="hidden" id="options-auto" tabindex="2" checked><label for="options-auto" id="options-auto-label" class="hidden">Auto-minify on type</label></span>
 		<button id="go" tabindex="1">Minify</button>
 	</div><!-- .in-container -->
 </div><!-- .col -->
@@ -99,7 +99,6 @@
 	</div>
 
 	<div id="out-container" class="hidden">
-		<p>The minified output (<span id="stats"></span>)</p>
 		<textarea id="out" spellcheck="false" tabindex="3"></textarea>
 	</div>
 

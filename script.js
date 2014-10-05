@@ -46,11 +46,12 @@ var $options_auto = $('options-auto');
 var $go = $('go');
 var $out = $('out');
 var $out_container = $('out-container');
+var $out_stats = $('out-stats');
+var $stats = $('stats');
 var $in = $('in');
 var $info = $('info');
 var $error = $('error');
 var $error_container = $('error-container');
-var $stats = $('stats');
 
 function $(id) {
 	return document.getElementById(id);
@@ -188,7 +189,7 @@ function go() {
 	function main() {
 		var res = uglify(input, uglify_options);
 		hide($info, $error_container);
-		show($out_container);
+		show($out_container, $out_stats);
 
 		$out.value = res || '/* no output! */';
 		$stats.innerHTML = res.length + ' bytes, saved ' + ((1 - res.length / input.length) * 100).toFixed(2) + '%';
@@ -197,7 +198,7 @@ function go() {
 
 function show_error(e, param) {
 	console.error('Error', e);
-	hide($info, $out_container);
+	hide($info, $out_container); $out_stats.className = 'invisible';
 	show($error_container);
 
 	if (e instanceof JS_Parse_Error) {
@@ -228,6 +229,7 @@ function select_text() {
 	var self = this;
 	self.select();
 
+	// Workaround for Chrome
 	self.onmouseup = self.onkeyup = function() {
 		// Prevent further mouseup intervention
 		self.onmouseup = self.onkeyup = null;
