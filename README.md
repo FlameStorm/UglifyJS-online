@@ -5,7 +5,7 @@ UglifyJS 2 is an excellent tool to help you minify your JavaScript! It's a tried
 
 This is a simple wrapper for the browser around the minifier; the hard work is done by [Mihai Bazon](http://lisperator.net/). If you need an automated solution, I suggest checking out the [source code](https://github.com/mishoo/UglifyJS2), intended for Node.JS.
 
-Do you want to help improve this tool? It's on [Github](https://github.com/Skalman/UglifyJS-online).
+Do you want to help improve this tool? It's on [Github](https://github.com/Rikk/UglifyJS-online).
 
 
 License
