@@ -1,0 +1,1 @@
+document.writeln('<p id="version">Last update: Jul 23, 2015</p>');
