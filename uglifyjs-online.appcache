@@ -1,10 +1,12 @@
 CACHE MANIFEST
 
-# Appcache version Jul 23, 2015
+# Appcache version Jul 30, 2015
 # (whenever a change is made anywhere, change this version)
 
 favicon.ico
 style.css
+script.js
+print-version.js
 
 uglify/lib/utils.js
 uglify/lib/ast.js
@@ -13,5 +15,3 @@ uglify/lib/transform.js
 uglify/lib/scope.js
 uglify/lib/output.js
 uglify/lib/compress.js
-
-script.js
