@@ -1,1 +1,1 @@
-document.writeln('<p id="version">Last update: Jul 30, 2015</p>');
+document.writeln('<p id="version">Last update: Aug 7, 2015</p>');
